@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<title>Calculator</title>
+	</head>
+	<body>
+		<form method="post">
+			<div class="container">
+			<label for="currency_select">Wybierz walutę:</label>
+			<select name="selected_currency">
+				<option value="USD">dolar amerykański</option>
+				<option value="AUD">dolar australijski</option>
+				<option value="CAD">dolar kanadyjski</option>
+				<option value="EUR">euro</option>
+				<option value="HUF">forint (Węgry)</option>
+				<option value="CHF">frank szwajcarski</option>
+				<option value="GBP">funt szterling</option>
+				<option value="JPY">jen (Japonia)</option>
+				<option value="CZK">korona czeska</option>
+				<option value="DKK">korona duńska</option>
+				<option value="NOK">korona norweska</option>
+				<option value="SEK">korona szwedzka</option>
+				<option value="XDR">SDR (MFW)</option>
+			</select>
+			<input type="number" placeholder="Wprowadź ilość" name="amount" min="0" required>
+			<button type="submit">Przelicz</button>
+			</div>
+		</form>
+	</body>
+</html>
