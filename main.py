@@ -9,10 +9,11 @@ app = Flask(__name__)
 
 @app.route("/calculator/", methods=["GET", "POST"])
 def calculator():
-    if request.method == "GET":
+    if request.method == "POST":
         data = request.form
-        print(data.get("amount"))
-
+        print(
+            f'{float(myfunctions.get_currency_ask("currency_table.csv", data.get("selected_currency"))) * float(data.get("amount"))} PLN'
+        )
     return render_template("calculator.html")
 
 

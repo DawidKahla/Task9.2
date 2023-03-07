@@ -25,7 +25,7 @@ def make_calculator_template(infilename, outfilename):
     lines = get_lines_from_file(infilename)
     with io.open(outfilename, "w", encoding="utf-8") as outfile:
         outfile.write(
-            '<!DOCTYPE html>\n<html lang="pl">\n\t<head>\n\t\t<meta charset="utf-8">\n\t\t<link rel="stylesheet" href="{{ url_for(\'static\', filename=\'style.css\') }}">\n\t\t<title>Calculator</title>\n\t</head>\n\t<body>\n\t\t<form>\n\t\t\t<div class="container">\n\t\t\t<label for="currency_select">Wybierz walutę:</label>\n\t\t\t<select>'
+            '<!DOCTYPE html>\n<html lang="pl">\n\t<head>\n\t\t<meta charset="utf-8">\n\t\t<link rel="stylesheet" href="{{ url_for(\'static\', filename=\'style.css\') }}">\n\t\t<title>Calculator</title>\n\t</head>\n\t<body>\n\t\t<form method="post">\n\t\t\t<div class="container">\n\t\t\t<label for="currency_select">Wybierz walutę:</label>\n\t\t\t<select name="selected_currency">'
         )
         for line in lines:
             if line != lines[0]:
@@ -38,4 +38,9 @@ def make_calculator_template(infilename, outfilename):
 
 def get_currency_ask(infilename, code):
     lines = get_lines_from_file(infilename)
-    return [line[3] for line in lines if line[1] == code][0]
+    for line in lines:
+        line = line.split(sep=";")
+        if line[1] == code:
+            return line[3]
+    return 0
+    # return [line[3] for line in lines if line[1] == code][0]
